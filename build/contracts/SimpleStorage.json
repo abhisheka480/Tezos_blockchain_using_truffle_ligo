@@ -1,0 +1,22 @@
+{
+  "contractName": "SimpleStorage",
+  "abi": [],
+  "michelson": "[ { \"prim\": \"parameter\", \"args\": [ { \"prim\": \"int\" } ] },\n  { \"prim\": \"storage\", \"args\": [ { \"prim\": \"int\" } ] },\n  { \"prim\": \"code\",\n    \"args\":\n      [ [ { \"prim\": \"CAR\" },\n          { \"prim\": \"NIL\", \"args\": [ { \"prim\": \"operation\" } ] },\n          { \"prim\": \"PAIR\" } ] ] } ]",
+  "source": "function main (const newValue : int;  const storedValue : int) : (list(operation) * int) is\n  block { storedValue := newValue } with ((nil : list(operation)), storedValue)\n",
+  "sourcePath": "/home/maxpayne/tezos-project/contracts/SimpleStorage.ligo",
+  "compiler": {
+    "name": "ligo",
+    "version": "next"
+  },
+  "networks": {
+    "NetXQuWNUFxBG8m": {
+      "events": {},
+      "links": {},
+      "address": "KT1E5FtWK3TkEexgyk4rKpxvDBkWyN6RbFUY",
+      "transactionHash": "ooXpeTP8ZjUVsJufi7J95hRWH8VWTBANoD9GeYdNzUh1RvWyvhE"
+    }
+  },
+  "schemaVersion": "3.2.0-tezos.1",
+  "updatedAt": "2020-09-15T12:55:22.463Z",
+  "networkType": "tezos"
+}

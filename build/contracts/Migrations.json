@@ -1,0 +1,22 @@
+{
+  "contractName": "Migrations",
+  "abi": [],
+  "michelson": "[ { \"prim\": \"parameter\", \"args\": [ { \"prim\": \"int\" } ] },\n  { \"prim\": \"storage\",\n    \"args\":\n      [ { \"prim\": \"pair\",\n          \"args\":\n            [ { \"prim\": \"int\", \"annots\": [ \"%last_completed_migration\" ] },\n              { \"prim\": \"address\", \"annots\": [ \"%owner\" ] } ] } ] },\n  { \"prim\": \"code\",\n    \"args\":\n      [ [ { \"prim\": \"DUP\" }, { \"prim\": \"CDR\" }, { \"prim\": \"DUP\" },\n          { \"prim\": \"CDR\" }, { \"prim\": \"SENDER\" }, { \"prim\": \"COMPARE\" },\n          { \"prim\": \"NEQ\" },\n          { \"prim\": \"IF\",\n            \"args\":\n              [ [ { \"prim\": \"SWAP\" }, { \"prim\": \"DROP\" } ],\n                [ { \"prim\": \"DUP\" },\n                  { \"prim\": \"DIG\", \"args\": [ { \"int\": \"2\" } ] },\n                  { \"prim\": \"CAR\" }, { \"prim\": \"SWAP\" }, { \"prim\": \"CDR\" },\n                  { \"prim\": \"SWAP\" }, { \"prim\": \"PAIR\" },\n                  { \"prim\": \"DIP\", \"args\": [ [ { \"prim\": \"DROP\" } ] ] } ] ] },\n          { \"prim\": \"NIL\", \"args\": [ { \"prim\": \"operation\" } ] },\n          { \"prim\": \"PAIR\" } ] ] } ]",
+  "source": "type migrations is record\n  owner : address;\n  last_completed_migration : int;\nend\n\nfunction main (const completed_migration: int ; var migrations : migrations) : (list(operation) * migrations) is\n  block {\n    if sender =/= migrations.owner\n    then\n      skip\n    else\n      migrations.last_completed_migration := completed_migration;\n  } with ((nil : list(operation)), migrations);\n",
+  "sourcePath": "/home/maxpayne/tezos-project/contracts/Migrations.ligo",
+  "compiler": {
+    "name": "ligo",
+    "version": "next"
+  },
+  "networks": {
+    "NetXQuWNUFxBG8m": {
+      "events": {},
+      "links": {},
+      "address": "KT1X1qEpq8uLj1vzoLwd2PchEfinHfrDPfdp",
+      "transactionHash": "ooJDKbDLepUMBCkmSdZpZg3RVdbxs39eNzXHTcY6hWFcJgqRr2S"
+    }
+  },
+  "schemaVersion": "3.2.0-tezos.1",
+  "updatedAt": "2020-09-15T12:55:24.731Z",
+  "networkType": "tezos"
+}
