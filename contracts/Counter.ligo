@@ -14,3 +14,5 @@ function main (const p : action ; const s : int) : (list(operation) * int) is
     | Increment (n) -> add (s, n)
     | Decrement (n) -> subtract (s, n)
     end)
+
+    
